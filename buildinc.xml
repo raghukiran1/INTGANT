@@ -1,0 +1,13 @@
+<project name="javaproject" default="inc">
+
+<target name="inc">
+
+       <copy todir="aaa">
+         <fileset dir="web">
+   <exclude name="some1.xml"/>
+  </fileset>
+ </copy>
+ </target>
+
+ </project>
+
