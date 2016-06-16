@@ -1,53 +1,28 @@
-<project name="javaproject" default="dist">
-<property file="abc.txt"/>
+<project name="javaproject" default="compile">
 
-<target name="clean">
 
-   <delete dir="build/classes"/>
-   <delete dir="build/jar"/>
-   <delete dir="build/web"/>
+target name="delete">
+  
+  <delete dir="build/classes"/>
+  <delete dir="build/jar"/>
+  <delete dir="build/web"/>
   
   </target>
+<target name="init"depends="delete" >
   
-  <target name="init" depends="clean">
-  
-     <mkdir dir="build/classes"/>
+  <mkdir dir="build/classes"/>
   <mkdir dir="build/jar"/>
   <mkdir dir="build/web"/>
   
   </target>
   
-    <target name="compile" depends="init">
+  <target name="compile" depends="init">
  
  <javac srcdir="src"
        destdir="build/classes"/>
     
  </target>
  
- <target name="jar" depends="compile">
  
- <jar destfile="build/jar/app-${appversion}.jar" basedir="build/classes"/>
- 
-   </target>
-   
-   <target name="copywebfiles">
-   
-   <copy todir="build/web">
-     <fileset dir="web">
-  
-  </fileset>
-  </copy>
-   
-   </target>
-   
-   <target name="dist" depends="jar,copywebfiles">
-   
-       <zip destfile="dist/ver${appversion}.zip">
-        <fileset dir="build/web"/>
-        <fileset dir="build/jar"/>
-     
-     </zip>
+  </project>
 
-   </target>
-   
-   </project>
